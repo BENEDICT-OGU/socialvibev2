@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await axiosInstance.post("/auth/login", formData);
+      const res = await axiosInstance.post("/api/auth/login", formData);
       login(res.data.token, res.data.user);
       alert("Login successful!");
       setFormData({ emailOrPhone: "", password: "" });
