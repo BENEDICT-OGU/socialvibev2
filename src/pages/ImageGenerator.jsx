@@ -7,7 +7,7 @@ export default function ImageGenerator() {
 
   const generateImage = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/image/generate", {
+    const res = await fetch("https://socialvibebackend-5.onrender.com/api/image/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),

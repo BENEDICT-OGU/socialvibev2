@@ -81,7 +81,7 @@ export default function MapPage() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/map", {
+      const res = await axios.post("https://socialvibebackend-5.onrender.com/api/map", {
         start: { lat: position[0], lon: position[1] },
         end: { lat: destLat, lon: destLon },
         mode: transportMode

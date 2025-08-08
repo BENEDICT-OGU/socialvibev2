@@ -204,24 +204,26 @@ export default function App() {
       )}
 
       {!isAuthRoute && (
-  <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 md:hidden">
-    <div className="flex justify-around items-center px-1 py-2">
+  <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 md:hidden">
+    <div className="flex justify-around items-center px-2 py-2">
       {[
         { 
           to: "/", 
           icon: <FiHome size={20} />,
-          name: "Home"
+          name: "Home",
+          activeIcon: <FiHome size={20} className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg shadow-pink-500/30" />
         },
         { 
           to: "/explore", 
           icon: <FiCompass size={20} />,
-          name: "Explore"
+          name: "Explore",
+          activeIcon: <FiCompass size={20} className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg shadow-pink-500/30" />
         },
         { 
           to: "/createPost", 
           icon: (
-            <div className="flex items-center justify-center -mt-6 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg shadow-pink-500/30">
-              <FiPlus size={16} className="text-white" />
+            <div className="flex items-center justify-center -mt-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg shadow-pink-500/30 w-12 h-12">
+              <FiPlus size={20} className="text-white" />
             </div>
           ),
           isSpecial: true
@@ -229,34 +231,41 @@ export default function App() {
         { 
           to: "/reels", 
           icon: <FiFilm size={20} />,
-          name: "Reels"
+          name: "Reels",
+          activeIcon: <FiFilm size={20} className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg shadow-pink-500/30" />
         },
         { 
-          to: "/profile", 
-          icon: <FiUser size={20} />,
-          name: "Profile"
+          component: (
+            <div className="relative -mt-1">
+              <FloatingMenu />
+            </div>
+          )
         }
       ].map((item, idx) => (
-        <Link
-          key={idx}
-          to={item.to}
-          className={`relative flex flex-col items-center justify-center w-full ${
-            item.isSpecial ? "" : "py-1"
-          }`}
-        >
-          <div className={`flex flex-col items-center ${
-            location.pathname === item.to 
-              ? "text-pink-500 dark:text-pink-400" 
-              : "text-gray-500 dark:text-gray-400"
-          }`}>
-            {item.icon}
-            {!item.isSpecial && (
-              <span className="text-[10px] mt-0.5 font-medium">
-                {item.name}
-              </span>
-            )}
+        item.component ? (
+          <div key={idx} className="flex flex-col items-center justify-center">
+            {item.component}
           </div>
-        </Link>
+        ) : (
+          <Link
+            key={idx}
+            to={item.to}
+            className={`relative flex flex-col items-center ${item.isSpecial ? "mt-1" : ""}`}
+          >
+            <div className={`flex flex-col items-center ${
+              location.pathname === item.to ? "text-pink-500" : "text-gray-500 dark:text-gray-400"
+            }`}>
+              {location.pathname === item.to && item.activeIcon ? item.activeIcon : item.icon}
+              {!item.isSpecial && (
+                <span className={`text-xs mt-1 ${
+                  location.pathname === item.to ? "text-pink-500 font-medium" : "text-gray-500 dark:text-gray-400"
+                }`}>
+                  {item.name}
+                </span>
+              )}
+            </div>
+          </Link>
+        )
       ))}
     </div>
   </nav>

@@ -6,7 +6,7 @@ import axiosInstance from "../api";
 const SOCKET_URL =
   typeof import.meta !== "undefined" && import.meta.env?.VITE_SOCKET_URL
     ? import.meta.env.VITE_SOCKET_URL
-    : "http://localhost:5000";
+    : "https://socialvibebackend-5.onrender.com";
 
 const socket = io(SOCKET_URL, {
   auth: { token: localStorage.getItem("token") },
