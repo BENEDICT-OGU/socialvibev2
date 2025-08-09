@@ -142,8 +142,8 @@ export default function App() {
   return (
    <div className={`${darkMode ? 'dark' : ''} `}>
 
-      <main className="flex-1 flex justify-center dark:bg-black">
-        <div className="h-full w-full max-w-6xl px-2 md:px-6 py-6 lg:pr-80 relative">
+      <main className="flex-1 flex justify-center dark:bg-black ">
+        <div className="h-[80%] w-full max-w-6xl px-2 md:px-8  lg:pr-80 relative">
           {!isAuthRoute && <LeftSidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
 
           <Routes>
@@ -152,7 +152,7 @@ export default function App() {
               <Route path="/reels" element={<ReelsPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/menu" element={<MenuPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/settings" element={<SettingsPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
               <Route path="/reels-search" element={<ReelsSearch />} />
               <Route path="/createPost" element={<CreatePost />} />
               <Route path="/createreel" element={<CreateReel />} />

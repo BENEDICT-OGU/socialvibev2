@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   FiSun, 
@@ -18,11 +18,9 @@ import {
   FiAward,
   FiHeart
 } from "react-icons/fi";
-import { FaLanguage, FaRegMoon } from "react-icons/fa";
-// import  useDarkMode  from "../context/ThemeContext";
+import { FaLanguage } from "react-icons/fa";
 
-export default function SettingsPage() {
-  const { darkMode, toggleDarkMode } = useState();
+export default function SettingsPage({ darkMode, toggleDarkMode }) {
   const [activeTab, setActiveTab] = useState("account");
   const location = useLocation();
 
@@ -111,7 +109,7 @@ export default function SettingsPage() {
                   </p>
                 </div>
                 <button
-                  // onClick={toggleDarkMode}
+                  onClick={toggleDarkMode}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                     darkMode ? 'bg-pink-500' : 'bg-gray-300'
                   }`}
@@ -321,7 +319,6 @@ export default function SettingsPage() {
             </div>
           )}
 
-          {/* Add more tabs content following the same pattern */}
           {activeTab === "language" && (
             <div className="space-y-6">
               <div>
