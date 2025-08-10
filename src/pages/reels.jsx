@@ -36,6 +36,8 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
+import Test from "../assets/videos/test1.mp4";
+// import heartAnimation from "./heart.json";
 
 const ReelsPage = () => {
   // State for reels data
@@ -80,8 +82,7 @@ const ReelsPage = () => {
     const mockReels = [
       {
         id: 1,
-        videoUrl:
-          "https://assets.mixkit.co/videos/preview/mixkit-woman-dancing-under-neon-lights-1230-large.mp4",
+        videoUrl: Test,
         thumbnail: "https://picsum.photos/400/700",
         creator: {
           id: 101,
@@ -287,7 +288,7 @@ const ReelsPage = () => {
         handleLike(reelId);
 
         // Create multiple hearts at tap position
-        const newHearts = Array(15)
+        const newHearts = Array(5)
           .fill()
           .map((_, i) => ({
             id: Date.now() + i,
@@ -448,7 +449,7 @@ const ReelsPage = () => {
 
   return (
     <div
-      className=" relative  bg-blue text-white overflow-hidden mb-12"
+      className="relative bg-black text-white overflow-hidden h-screen w-full"
       ref={containerRef}
       {...swipeHandlers}
     >
@@ -494,14 +495,16 @@ const ReelsPage = () => {
           >
             {/* Video player */}
             <div
-              className="relative h-full w-full flex items-center justify-center"
+              className="relative h-full w-full flex items-center justify-center bg-black"
               onDoubleClick={handleDoubleTap}
             >
               <video
                 ref={index === currentReelIndex ? videoRef : null}
                 src={reel.videoUrl}
                 poster={reel.thumbnail}
-                className="h-full w-full object-cover"
+                className={`h-full w-full ${
+                  reel.videoUrl === Test ? "object-contain" : "object-cover"
+                }`}
                 autoPlay={index === currentReelIndex}
                 loop
                 muted={isMuted}
@@ -524,7 +527,7 @@ const ReelsPage = () => {
 
               {/* Mute button */}
               <button
-                className="absolute top-4 right-4 bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-all"
+                className="absolute top-24 right-4 bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 transition-all"
                 onClick={toggleMute}
                 onMouseEnter={() => setShowVolumeControl(true)}
                 onMouseLeave={() => setShowVolumeControl(false)}
@@ -581,7 +584,7 @@ const ReelsPage = () => {
               </div>
 
               {/* Right sidebar actions */}
-              <div className="absolute right-4 bottom-32 flex flex-col items-center space-y-6">
+              <div className="absolute right-1 bottom-32 flex flex-col items-center space-y-6">
                 {/* Creator profile */}
                 <div className="flex flex-col items-center">
                   <div className="relative group">
@@ -628,8 +631,8 @@ const ReelsPage = () => {
                   </motion.button>
                   <span className="text-xs mt-1 font-medium">
                     {formatNumber(
-                      reel.likes + (likedReels.includes(reel.id) ? 1 : 0)
-                    )}
+                      reel.likes + (likedReels.includes(reel.id) ? 1 : 0
+                    ))}
                   </span>
                 </div>
 

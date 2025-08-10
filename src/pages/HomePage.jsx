@@ -144,7 +144,7 @@ export default function HomePage() {
     }
     } catch (err) {
       console.error("Failed to fetch posts:", err);
-      setError(err.response?.data?.message || "Failed to load posts");
+      setError(err.response?.data?.message || "Failed to load posts, please check your internet connection and try again");
       if (err.response?.status === 401) {
         navigate("/login");
       }
@@ -389,7 +389,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-black dark:to-gray-900">
       {/* Fullscreen Media Viewer */}
       <AnimatePresence>
         {fullscreenMedia && (
@@ -460,7 +460,7 @@ useEffect(() => {
       {/* Main Content */}
       <div className="max-w-lg mx-auto px-2 pb-20">
         {/* Stories */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 mb-4 overflow-x-auto">
+        <div className="bg-white dark:bg-gray-900 dark:text-white rounded-2xl shadow-lg p-4 mb-4 overflow-x-auto">
           <div className="flex space-x-4">
             {stories.map((story) => (
               <div
@@ -514,7 +514,7 @@ useEffect(() => {
         </div>
 
         {/* Feed Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-2 mb-4">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-2 mb-4">
           <div className="flex border-b border-gray-200 dark:border-gray-700">
             <button
               onClick={() => {
@@ -561,7 +561,7 @@ useEffect(() => {
         {/* Posts Feed */}
         <div className="flex flex-col gap-4">
           {posts.length === 0 ? (
-            <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+            <div className="text-center py-10 bg-white dark:bg-black rounded-2xl shadow-lg">
               <p className="text-gray-500 dark:text-gray-400">
                 No posts yet. Create one!
               </p>
@@ -594,9 +594,9 @@ useEffect(() => {
                   ref={isLastPost ? lastPostRef : null}
                 >
                   {/* Premium Post Card Container */}
-                  <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                  <div className="bg-white dark:bg-black rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
                     {/* Post Header */}
-                    <div className="p-4 backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border-b border-gray-100 dark:border-gray-700">
+                    <div className="p-4 backdrop-blur-sm bg-white/80 dark:bg-black border-b border-gray-100 dark:border-gray-700">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <Link
@@ -663,11 +663,11 @@ useEffect(() => {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 10 }}
-                              className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-xl z-50 overflow-hidden border border-gray-100 dark:border-gray-700"
+                              className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-xl z-[1000] overflow-hidden border border-gray-100 dark:border-gray-700"
                             >
                               <Link to="/report">
                               <button className="flex items-center w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                                                 <span>report user</span>
+                                <span>report user</span>
                               </button>
                               </Link>
                               
@@ -731,7 +731,7 @@ useEffect(() => {
                     {/* Premium Media Display */}
                     {post.media?.length > 0 && (
                       <div className="relative group">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
 
                         <div 
                           className="cursor-pointer"
@@ -793,7 +793,7 @@ useEffect(() => {
                                 handlePrev(postIdx);
                               }}
                               disabled={mediaIdx === 0}
-                              className={`absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full p-2 z-20 transition-all ${
+                              className={`absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full p-2  transition-all ${
                                 mediaIdx === 0
                                   ? "opacity-0 cursor-default"
                                   : "opacity-0 group-hover:opacity-100 hover:bg-black/50"
@@ -820,7 +820,7 @@ useEffect(() => {
                                 handleNext(postIdx, post.media.length);
                               }}
                               disabled={mediaIdx === post.media.length - 1}
-                              className={`absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full p-2 z-20 transition-all ${
+                              className={`absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 text-white rounded-full p-2  transition-all ${
                                 mediaIdx === post.media.length - 1
                                   ? "opacity-0 cursor-default"
                                   : "opacity-0 group-hover:opacity-100 hover:bg-black/50"
@@ -846,7 +846,7 @@ useEffect(() => {
 
                         {/* Media Indicators */}
                         {post.media.length > 1 && (
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                             {post.media.map((_, i) => (
                               <span
                                 key={i}
@@ -1027,7 +1027,7 @@ useEffect(() => {
                               post.comments.map((comment, idx) => (
                                 <div
                                   key={idx}
-                                  className="flex items-start space-x-3"
+                                  className="flex items-start space-x-3 pb-10"
                                 >
                                   <Link
                                     to={`/profile/${comment.user?.username}`}

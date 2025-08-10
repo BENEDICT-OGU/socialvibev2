@@ -19,6 +19,7 @@ import {
   FiHeart
 } from "react-icons/fi";
 import { FaLanguage } from "react-icons/fa";
+import { hover } from "framer-motion";
 
 export default function SettingsPage({ darkMode, toggleDarkMode }) {
   const [activeTab, setActiveTab] = useState("account");
@@ -48,7 +49,7 @@ export default function SettingsPage({ darkMode, toggleDarkMode }) {
   ];
 
   return (
-    <div className={`flex min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    <div className={`flex min-h-screen ${darkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
       {/* Sidebar Navigation */}
       <div className={`w-64 border-r ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'} p-4 hidden md:block`}>
         <h2 className="text-xl font-bold mb-6 text-pink-500">Settings</h2>
@@ -87,7 +88,7 @@ export default function SettingsPage({ darkMode, toggleDarkMode }) {
                   activeTab === tab.id
                     ? 'bg-pink-500 text-white'
                     : darkMode
-                      ? 'bg-gray-700 text-gray-300'
+                      ? 'bg-gray-900 text-gray-300'
                       : 'bg-gray-200 text-gray-700'
                 }`}
               >
@@ -98,7 +99,7 @@ export default function SettingsPage({ darkMode, toggleDarkMode }) {
         </div>
 
         {/* Settings Content */}
-        <div className={`rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-white'} p-6 shadow-sm`}>
+        <div className={`rounded-xl  ${darkMode ? 'bg-black shadow-gray-700' : 'bg-white shadow-gray-500'} p-6 shadow-sm`}>
           {activeTab === "account" && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">

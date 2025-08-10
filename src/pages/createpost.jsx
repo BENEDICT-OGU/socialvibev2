@@ -422,8 +422,8 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
-      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-black p-4">
+      <div className="max-w-3xl mx-auto bg-white dark:bg-black rounded-xl shadow-md p-6">
         <h2 className="text-2xl font-bold text-center mb-6 text-pink-600">Create Post</h2>
 
         {Object.keys(errors).length > 0 && (
@@ -463,7 +463,7 @@ export default function CreatePost() {
                     handleTypeSelect(type);
                   }
                 }}
-                className="flex flex-col items-center p-4 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/20 transition"
+                className="flex flex-col items-center p-4 bg-gray-200  dark:bg-gray-900 rounded-lg hover:bg-pink-100 dark:hover:bg-pink-900/20 transition"
               >
                 <div className="text-pink-500 mb-2">{icon}</div>
                 <span className="text-gray-800 dark:text-gray-200">{label}</span>
@@ -1203,7 +1203,7 @@ export default function CreatePost() {
               )}
             </div>
 
-            <div className="flex gap-3 pt-4">
+            <div className="flex gap-3 pt-4 pb-12">
               <button
                 type="button"
                 onClick={() => {
