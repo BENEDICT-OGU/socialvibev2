@@ -2,8 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const AuthContext = createContext();
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || "https://socialvibebackend-5.onrender.com";
-
+const baseURL = import.meta.env.VITE_API_BASE_URL || "https://socialvibebackend-5.onrender.com/api";
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(() => {
     const token = localStorage.getItem("token");
