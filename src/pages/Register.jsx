@@ -265,11 +265,11 @@ function Register() {
               </div>
               <label htmlFor="acceptedTerms" className="text-sm text-gray-600">
                 I agree to the{" "}
-                <a href="/terms" className="text-pink-600 hover:underline font-medium">
+                <a href="/tc" className="text-pink-600 hover:underline font-medium">
                   Terms and Conditions
                 </a>{" "}
                 and{" "}
-                <a href="/privacy" className="text-pink-600 hover:underline font-medium">
+                <a href="/tc" className="text-pink-600 hover:underline font-medium">
                   Privacy Policy
                 </a>
               </label>
