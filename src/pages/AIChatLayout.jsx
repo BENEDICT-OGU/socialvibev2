@@ -507,7 +507,7 @@ function AIAssistantPro({ userId, threadId }) {
       </main>
 
       {/* Input Area */}
-      <footer className="p-2 md:p-4 border-t dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur-sm">
+      <footer className="p-2 md:p-4 border-t dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur-sm mb-20">
         <div className="flex items-center gap-1 md:gap-2">
           <motion.button
             onClick={handleVoiceInput}

@@ -584,7 +584,7 @@ const ReelsPage = () => {
               </div>
 
               {/* Right sidebar actions */}
-              <div className="absolute right-1 bottom-32 flex flex-col items-center space-y-6">
+              <div className="absolute right-[1px] bottom-32 flex flex-col items-center space-y-6">
                 {/* Creator profile */}
                 <div className="flex flex-col items-center">
                   <div className="relative group">
