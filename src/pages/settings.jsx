@@ -168,6 +168,21 @@ export default function SettingsPage({ darkMode, toggleDarkMode }) {
                   Change
                 </Link>
               </div>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-medium">logout</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                   logut of your account
+                  </p>
+                </div>
+                <Link 
+                  to="/logout" 
+                  className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400 text-sm font-medium"
+                >
+                  logout
+                </Link>
+              </div>
             </div>
           )}
 
@@ -452,6 +467,7 @@ export default function SettingsPage({ darkMode, toggleDarkMode }) {
 
           {activeTab === "delete" && (
             <div className="space-y-6">
+              
               <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30">
                 <h3 className="font-medium text-red-500">Delete Account</h3>
                 <p className="text-sm text-red-500/80 mt-1">
